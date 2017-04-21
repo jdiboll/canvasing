@@ -22,7 +22,7 @@
 	canvas.height = window.innerHeight;
 
 //mother-effing hsl
-	ctx.strokeStyle = 'hsl(${hue}, 100%, 50%)';
+	ctx.strokeStyle = '#547a82';
 	ctx.lineJoin = 'round';
 	ctx.lineCap = 'round';
 	ctx.lineWidth = 75;
@@ -30,16 +30,19 @@
 	let isDrawing = false;
 	let lastX = 0;
 	let lastY = 0;
+	let hue = 0;
 
 	function draw(e) {
 		if(!isDrawing) return;
 		console.log(e);
+		ctx.strokeStyle = 'hsl(${hue}, 100%, 50%)';
 		ctx.beginPath();
 		ctx.moveTo(lastX, lastY);
 		ctx.lineTo(e.offsetX, e.offsetY);
 		ctx.stroke();
 		lastX = e.offsetX;
 		lastY = e.offsetY;
+		hue++;
 	}
 
 canvas.addEventListener('mousemove', draw);
